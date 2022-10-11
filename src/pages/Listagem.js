@@ -4,6 +4,8 @@ import {
   getCategories,
   getProductsFromCategoryAndQuery,
 } from '../services/api';
+import '../styles/Listagem.css';
+import Shoppingbag from './ShoppingBag';
 // import Detalhes from './Detalhes';
 
 class Listagem extends React.Component {
@@ -87,30 +89,41 @@ class Listagem extends React.Component {
     const { categories, productsSearch } = this.state;
     return (
       <div>
-        <div>
-          <label htmlFor="search">
-            <input
-              type="text"
-              id="search"
-              onChange={ this.handleSearch }
-              data-testid="query-input"
-              name="search"
-            />
-          </label>
-          <button
-            type="button"
-            data-testid="query-button"
-            onClick={ this.handleClick }
-          >
-            Pesquisar
-          </button>
-          <p data-testid="home-initial-message">
-            Digite algum termo de pesquisa ou escolha uma categoria.
-          </p>
+        <div className="header">
+          <div>
+            <label htmlFor="search">
+              <input
+                type="text"
+                id="search"
+                onChange={ this.handleSearch }
+                data-testid="query-input"
+                name="search"
+                className="search-input"
+              />
+            </label>
+            <button
+              type="button"
+              data-testid="query-button"
+              onClick={ this.handleClick }
+              className="search-btn"
+            >
+              Pesquisar
+            </button>
+          </div>
+          <div className="title">
+            <div className="title-image">
+              <Shoppingbag />
+            </div>
+            <p className="front-end-title">
+              FRONT-END
+            </p>
+            <p className="online-store-title">
+              online store
+            </p>
+          </div>
           <Link to="/CarrinhoDeCompras" data-testid="shopping-cart-button">
-            <button type="button">
-              Carrinho de Compras
-              <img src="./wireframes/card_03/png" alt="" />
+            <button type="button" className="shopping-cart-btn">
+              <span className="shopping-span-btn">Carrinho de compras </span>
             </button>
           </Link>
         </div>
@@ -155,6 +168,11 @@ class Listagem extends React.Component {
               </div>
             )) : <p>Nenhum produto foi encontrado</p>
         }
+        <div>
+          <p data-testid="home-initial-message">
+            Digite algum termo de pesquisa ou escolha uma categoria.
+          </p>
+        </div>
       </div>
     );
   }
