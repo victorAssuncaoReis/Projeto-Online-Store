@@ -5,7 +5,9 @@ import {
   getProductsFromCategoryAndQuery,
 } from '../services/api';
 import '../styles/Listagem.css';
-import Shoppingbag from './ShoppingBag';
+import SearchGlass from './Searchglass';
+import ShoppingBag from './ShoppingBag';
+import ShoppingCart from './ShoppingCart';
 // import Detalhes from './Detalhes';
 
 class Listagem extends React.Component {
@@ -99,6 +101,7 @@ class Listagem extends React.Component {
                 data-testid="query-input"
                 name="search"
                 className="search-input"
+                placeholder="Digite o que você busca"
               />
             </label>
             <button
@@ -107,71 +110,88 @@ class Listagem extends React.Component {
               onClick={ this.handleClick }
               className="search-btn"
             >
-              Pesquisar
+              <SearchGlass />
             </button>
           </div>
           <div className="title">
             <div className="title-image">
-              <Shoppingbag />
+              <ShoppingBag />
             </div>
-            <p className="front-end-title">
-              FRONT-END
-            </p>
-            <p className="online-store-title">
-              online store
-            </p>
+            <div className="title-texts">
+              <p className="front-end-title">
+                FRONT-END
+              </p>
+              <p className="online-store-title">
+                online store
+              </p>
+            </div>
           </div>
           <Link to="/CarrinhoDeCompras" data-testid="shopping-cart-button">
-            <button type="button" className="shopping-cart-btn">
-              <span className="shopping-span-btn">Carrinho de compras </span>
-            </button>
+            {/*             <button type="button" className="shopping-cart-btn">
+              /*               <span className="shopping-span-btn">Carrinho de compras </span> */
+              <ShoppingCart />
+              /*             </button> */}
+            {' '}
           </Link>
         </div>
-        <div>
-          <p>Categorias:</p>
-          {categories.map((categoria) => (
-            <button
-              type="button"
-              key={ categoria.id }
-              id={ categoria.id }
-              onClick={ this.buttonCategories }
-              data-testid="category"
-            >
-              {categoria.name}
-            </button>
-          ))}
-        </div>
-        {
-          productsSearch.length > 0
-            ? productsSearch.map((item) => (
-              <div
-                data-testid="product"
-                key={ item.id }
+        <div className="content-container">
+          <div className="categorias">
+            <p className="categories-text">Categorias:</p>
+            <hr className="cat-line" />
+            {categories.map((categoria) => (
+              <button
+                type="button"
+                key={ categoria.id }
+                id={ categoria.id }
+                onClick={ this.buttonCategories }
+                data-testid="category"
+                className="category-btns"
               >
-                <Link
-                  to={ `/Detalhes/${item.id}` }
-                  id={ item.id }
-                  data-testid="product-detail-link"
-                >
-                  <p>{item.title}</p>
-                  <img src={ item.thumbnail } alt={ item.name } />
-                  <p>{item.price}</p>
-                </Link>
-                <button
-                  data-testid="product-add-to-cart"
-                  type="button"
-                  onClick={ this.cartAdd }
-                  value={ item.id }
-                >
-                  Adicionar ao Carrinho
-                </button>
-              </div>
-            )) : <p>Nenhum produto foi encontrado</p>
-        }
-        <div>
-          <p data-testid="home-initial-message">
-            Digite algum termo de pesquisa ou escolha uma categoria.
-          </p>
+                {categoria.name}
+              </button>
+            ))}
+          </div>
+          <div className="results-div">
+            {
+              productsSearch.length > 0
+                ? productsSearch.map((item) => (
+                  <div
+                    data-testid="product"
+                    key={ item.id }
+                    className="products-result"
+                  >
+                    <Link
+                      to={ `/Detalhes/${item.id}` }
+                      id={ item.id }
+                      data-testid="product-detail-link"
+                    >
+                      <p>{item.title}</p>
+                      <img src={ item.thumbnail } alt={ item.name } />
+                      <p>{item.price}</p>
+                    </Link>
+                    <button
+                      data-testid="product-add-to-cart"
+                      type="button"
+                      onClick={ this.cartAdd }
+                      value={ item.id }
+                    >
+                      Adicionar ao Carrinho
+                    </button>
+                  </div>
+                )) : (
+                  <div className="message-div">
+                    <div className="not-found">
+                      <p>Nenhum produto foi encontrado</p>
+                    </div>
+                    <div className="search-text">
+                      <p data-testid="home-initial-message">
+                        Digite algum termo de pesquisa ou escolha uma categoria.
+                      </p>
+                    </div>
+                  </div>
+                )
+            }
+          </div>
         </div>
       </div>
     );

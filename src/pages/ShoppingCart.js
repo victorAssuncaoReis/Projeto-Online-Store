@@ -1,16 +1,16 @@
 import React from 'react';
-import shoppingCart from '..';
+import shoppingCart from '../icons/shopping-cart.png';
 
-export class Shoppingbag extends React.Component {
+export class Shoppingcart extends React.Component {
   render() {
     return (
       <div>
-        <section>
-          <img src={ shoppingIcon } alt="shopping bag" />
+        <section className="shopping-cart-btn">
+          <img src={ shoppingCart } alt="shopping cart" />
         </section>
       </div>
     );
   }
 }
 
-export default Shoppingbag;
+export default Shoppingcart;
