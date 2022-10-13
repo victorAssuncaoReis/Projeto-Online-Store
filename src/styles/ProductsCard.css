@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Epilogue:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,200;1,300;1,400;1,500;1,700&display=swap') ;
+
+.products-result {
+  background-color: white;
+  box-shadow: 2.759px 2.759px 5.518px rgba(0, 0, 0, 0.05);
+  font-family: Epilogue , sans-serif;
+  font-weight: 700;
+  height: 6%;
+  margin: 20px;
+  text-align: center;
+  text-decoration: none;
+  width: 30%;
+}
+
+.product-thumb {
+  margin-top: 25px;
+  width: 30%;
+}
+
+.product-title {
+  color: black;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.product-price {
+  color: #444955;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.product-btn {
+  background-color: #31c28d;
+  border: none;
+  color: white;
+  font-family: Epilogue , sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 20px;
+  width: 75%;
+}

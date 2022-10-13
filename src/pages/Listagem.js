@@ -5,6 +5,7 @@ import {
   getProductsFromCategoryAndQuery,
 } from '../services/api';
 import '../styles/Listagem.css';
+import '../styles/ProductsCard.css';
 import SearchGlass from './Searchglass';
 import ShoppingBag from './ShoppingBag';
 import ShoppingCart from './ShoppingCart';
@@ -165,15 +166,24 @@ class Listagem extends React.Component {
                       id={ item.id }
                       data-testid="product-detail-link"
                     >
-                      <p>{item.title}</p>
-                      <img src={ item.thumbnail } alt={ item.name } />
-                      <p>{item.price}</p>
+                      <img
+                        src={ item.thumbnail }
+                        alt={ item.name }
+                        className="product-thumb"
+                      />
+                      <p className="product-title">{item.title}</p>
+                      <p className="product-price">
+                        R$
+                        {' '}
+                        {item.price}
+                      </p>
                     </Link>
                     <button
                       data-testid="product-add-to-cart"
                       type="button"
                       onClick={ this.cartAdd }
                       value={ item.id }
+                      className="product-btn"
                     >
                       Adicionar ao Carrinho
                     </button>
