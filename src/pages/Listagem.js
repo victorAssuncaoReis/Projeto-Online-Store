@@ -102,7 +102,7 @@ class Listagem extends React.Component {
                 data-testid="query-input"
                 name="search"
                 className="search-input"
-                placeholder="Digite o que você busca"
+                placeholder="Digite o que você procura"
               />
             </label>
             <button
